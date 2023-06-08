@@ -14,8 +14,8 @@ all_users=User.objects.all().values()
 last_user=User.objects.last()
 
 
-update=User.object.get(id=3)
-update.first_name="ahmad"
+update=User.objects.get(id=3)
+update.last_name="pancakes"
 update.save()
 
 
