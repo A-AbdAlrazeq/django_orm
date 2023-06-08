@@ -1,0 +1,27 @@
+created_user = User(first_name="Abood",last_name="razeq",email_address="abood@gmail.com",age=24)
+created_user.save()
+
+created_user1 = User(first_name="Ahmad",last_name="Daragmeh",email_address="ahmad@gmail.com",age=27)
+created_user1.save()
+
+created_user2 = User(first_name="Ameer",last_name="Mahmoud",email_address="ameer@gmail.com",age=29)
+created_user2.save()
+
+
+all_users=User.objects.all().values()
+
+
+last_user=User.objects.last()
+
+
+update=User.object.get(id=3)
+update.first_name="ahmad"
+update.save()
+
+
+d=User.objects.get(id=2)
+d.delete()
+
+User.objects.all().order_by("first_name").values()
+
+User.objects.all().order_by("-first_name").values()
