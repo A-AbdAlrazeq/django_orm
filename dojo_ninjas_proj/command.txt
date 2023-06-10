@@ -1,0 +1,68 @@
+from dojo_ninjas_app.models import Dojo,Ninja
+
+created_dojo = Dojo(name="Abood",city="Nablus",state="NA")
+created_dojo.save()
+
+created_dojo1 = Dojo(name="Ahmad",city="Tubas",state="TU")
+created_dojo1.save()
+
+created_dojo2 = Dojo(name="Rami",city="Jenin",state="JE")
+created_dojo2.save()
+
+d = Dojo.objects.all()
+d.delete()
+
+created_dojo = Dojo(name="Abood",city="Nablus",state="NA")
+created_dojo.save()
+
+created_dojo1 = Dojo(name="Ahmad",city="Tubas",state="TU")
+created_dojo1.save()
+
+created_dojo2 = Dojo(name="Rami",city="Jenin",state="JE")
+created_dojo2.save()
+
+dojo1 = Dojo.objects.get(id=4)	
+my_Ninja = Ninja.objects.create(title="First_ninja", dojo=dojo1)
+my_Ninja1 = Ninja.objects.create(title="First_ninja 1", dojo=dojo1)
+my_Ninja2 = Ninja.objects.create(title="First_ninja 2", dojo=dojo1)	
+
+dojo2 = Dojo.objects.get(id=5)	
+my_Ninja = Ninja.objects.create(title="Second_ninja", dojo=dojo2)
+my_Ninja1 = Ninja.objects.create(title="Second_ninja 1", dojo=dojo2)
+my_Ninja2 = Ninja.objects.create(title="Second_ninja 2", dojo=dojo2)
+
+dojo3 = Dojo.objects.get(id=6)	
+my_Ninja = Ninja.objects.create(title="Third_ninja", dojo=dojo3)
+my_Ninja1 = Ninja.objects.create(title="Third_ninja 1", dojo=dojo3)
+my_Ninja2 = Ninja.objects.create(title="Third_ninja 2", dojo=dojo3)	
+
+Ninjas = Ninja.objects.filter(dojo=Dojo.objects.get(id=4))
+for ninja in Ninjas:
+	print(ninja.title)
+output: First_ninja
+	First_ninja 1
+	First_ninja 2
+
+Ninjas = Ninja.objects.filter(dojo=Dojo.objects.last())
+
+for ninja in Ninjas:
+    print(ninja.title)
+output:
+Third_ninja
+Third_ninja 1
+Third_ninja 2
+
+last=Ninja.objects.last()
+>>> print(last.title)
+Third_ninja 2
+
+
+desc = models.TextField(default="")
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from dojo_ninjas_app.models import Dojo
+
+created_dojo = Dojo(name="Fayiz",city="Ramallah",state="RA",desc="Hello")
+created_dojo.save()
