@@ -4,14 +4,9 @@ from .models import Dojo, Ninja
 
 
 def index(request):
-    if 'counter' in request.POST:
-        count = Ninja.objects.filter(dojo=Dojo.objects.get(
-            id=request.POST['counter'])).count()
-    count = 0
     context = {
         "all_the_Dojos": Dojo.objects.all(),
         "all_the_Ninjas": Ninja.objects.all(),
-        "counts": count
     }
     return render(request, "index.html", context)
 
