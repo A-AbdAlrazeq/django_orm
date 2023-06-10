@@ -11,7 +11,8 @@ class Dojo(models.Model):
 
 
 class Ninja(models.Model):
-    title = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255, default="")
+    last_name = models.CharField(max_length=255, default="")
     dojo = models.ForeignKey(
         Dojo, related_name="dojos", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

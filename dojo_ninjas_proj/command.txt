@@ -22,39 +22,28 @@ created_dojo2 = Dojo(name="Rami",city="Jenin",state="JE")
 created_dojo2.save()
 
 dojo1 = Dojo.objects.get(id=4)	
-my_Ninja = Ninja.objects.create(title="First_ninja", dojo=dojo1)
-my_Ninja1 = Ninja.objects.create(title="First_ninja 1", dojo=dojo1)
-my_Ninja2 = Ninja.objects.create(title="First_ninja 2", dojo=dojo1)	
+my_Ninja = Ninja.objects.create(first_name="John",last_name="Cena", dojo=dojo1)
+my_Ninja1 = Ninja.objects.create(first_name="Ahmad",last_name="Show", dojo=dojo1)
+my_Ninja2 = Ninja.objects.create(first_name="Leo",last_name="Messi", dojo=dojo1)	
 
 dojo2 = Dojo.objects.get(id=5)	
-my_Ninja = Ninja.objects.create(title="Second_ninja", dojo=dojo2)
-my_Ninja1 = Ninja.objects.create(title="Second_ninja 1", dojo=dojo2)
-my_Ninja2 = Ninja.objects.create(title="Second_ninja 2", dojo=dojo2)
+my_Ninja = Ninja.objects.create(first_name="Bara'a",last_name="Salameh", dojo=dojo2)
+my_Ninja1 = Ninja.objects.create(first_name="Mahmoud",last_name="Foqha", dojo=dojo2)
+my_Ninja2 = Ninja.objects.create(first_name="Raed",last_name="Abed", dojo=dojo2)
 
 dojo3 = Dojo.objects.get(id=6)	
-my_Ninja = Ninja.objects.create(title="Third_ninja", dojo=dojo3)
-my_Ninja1 = Ninja.objects.create(title="Third_ninja 1", dojo=dojo3)
-my_Ninja2 = Ninja.objects.create(title="Third_ninja 2", dojo=dojo3)	
+my_Ninja = Ninja.objects.create(first_name="Yazan",last_name="Hazboun", dojo=dojo3)
+my_Ninja1 = Ninja.objects.create(first_name="Ameed",last_name="kabaha", dojo=dojo3)
+my_Ninja2 = Ninja.objects.create(first_name="Lotfi",last_name="Salam", dojo=dojo3)	
 
 Ninjas = Ninja.objects.filter(dojo=Dojo.objects.get(id=4))
-for ninja in Ninjas:
-	print(ninja.title)
-output: First_ninja
-	First_ninja 1
-	First_ninja 2
+
 
 Ninjas = Ninja.objects.filter(dojo=Dojo.objects.last())
 
-for ninja in Ninjas:
-    print(ninja.title)
-output:
-Third_ninja
-Third_ninja 1
-Third_ninja 2
 
 last=Ninja.objects.last()
->>> print(last.title)
-Third_ninja 2
+
 
 
 desc = models.TextField(default="")
