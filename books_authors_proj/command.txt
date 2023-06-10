@@ -1,0 +1,93 @@
+from books_authors_app.models import Book,Author
+
+created_book = Book(title="C SHARP",desc="first_programming language")
+created_book.save()
+
+created_book1 = Book(title="Java",desc="second_programming language")
+created_book1.save()
+
+created_book2 = Book(title="Python",desc="third_programming language")
+created_book2.save()
+
+created_book3 = Book(title="PHP",desc="fourth_programming language")
+created_book3.save()
+
+created_book4 = Book(title="Ruby",desc="fifth_programming language")
+created_book4.save()
+
+created_author = Author(first_name="Jane",last_name="Austen")
+created_author.save()
+
+created_author1 = Author(first_name="Emily",last_name="Dickison")
+created_author1.save()
+
+created_author2 = Author(first_name="Fyodor",last_name="Dostoevsky")
+created_author2.save()
+
+created_author3 = Author(first_name="William",last_name="Shakespeare")
+created_author3.save()
+
+created_author4 = Author(first_name="Lau",last_name="Tzu")
+created_author4.save()
+
+update = Book.objects.get(id=1)
+update.title = "C#"
+update.save()
+
+update = Author.objects.get(id=4)
+update.first_name = "Bill"
+update.save()
+
+book_one = Book.objects.get(id=1)
+book_two = Book.objects.get(id=2)
+author = Author.objects.get(id=1)
+author.books.add(book_one)
+author.books.add(book_two)
+
+book_one = Book.objects.get(id=1)
+book_two = Book.objects.get(id=2)
+book_three = Book.objects.get(id=3)
+author = Author.objects.get(id=2)
+author.books.add(book_one)
+author.books.add(book_two)
+author.books.add(book_three)
+
+book_one = Book.objects.get(id=1)
+book_two = Book.objects.get(id=2)
+book_three = Book.objects.get(id=3)
+book_four = Book.objects.get(id=4)
+author = Author.objects.get(id=3)
+author.books.add(book_one)
+author.books.add(book_two)
+author.books.add(book_three)
+author.books.add(book_four)
+
+author = Author.objects.get(id=4)
+book_one = Book.objects.get(id=1)
+book_two = Book.objects.get(id=2)
+book_three = Book.objects.get(id=3)
+book_four = Book.objects.get(id=4)
+book_five = Book.objects.get(id=5)
+author.books.add(book_one)
+author.books.add(book_two)
+author.books.add(book_three)
+author.books.add(book_four)
+author.books.add(book_five)
+
+book_3 = Book.objects.get(id=3)
+book_3.authors.all()
+
+book_3 = Book.objects.get(id=3)
+author=book_3.authors.first()
+book_3.authors.remove(author)
+
+author = Author.objects.get(id=5)
+book_two = Book.objects.get(id=2)
+author.books.add(book_two)
+
+author = Author.objects.get(id=3)
+author.books.all()
+
+Books = Book.objects.get(id=5)
+Books.authors.all()
+
