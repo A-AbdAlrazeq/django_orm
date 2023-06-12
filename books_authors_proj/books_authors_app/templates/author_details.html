@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Details</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <ul class="nav justify-content-center p-3">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/authors">Authors</a>
+      </li>
+    </ul>
+    <div class="container">
+      <h1 class="p-1">Author Details:</h1>
+      <h1>{{author.first_name}} {{author.last_name}}</h1>
+      <p><strong>Id: </strong> {{ author.id }}</p>
+      <p><strong>Notes: </strong> {{ author.notes }}</p>
+      <p><strong>Books: </strong></p>
+      {% if author.books.all %}
+      <ul>
+        {% for book in author.books.all %}
+        <li>{{ book.title }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>This author doesn't own any book</p>
+      {% endif %} {% if books %}
+      <form
+        action="/authors/{{ author.id }}/assign"
+        method="post"
+        class="row mt-5"
+      >
+        {% csrf_token %}
+        <div class="form-group w-25">
+          <select name="book_id" class="col-8">
+            <option disabled value="0" selected>select a book</option>
+            {% for book in books %}
+            <option value="{{ book.id }}">{{ book.title}}</option>
+            {% endfor %}
+          </select>
+          <button class="btn btn-success m-1">Add</button>
+        </div>
+      </form>
+      {% endif %}
+    </div>
+  </body>
+</html>
